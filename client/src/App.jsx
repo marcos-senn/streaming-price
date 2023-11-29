@@ -1,10 +1,24 @@
-import './App.css';
+import Cotizaciones from './Sections/Cotizaciones';
 
 function App() {
 	return (
-		<>
-			<h1 className='text-3xl font-bold underline text-yellow-300'>Hello world!</h1>
-		</>
+		<main className='relative'>
+			<section className=''>
+				Hero
+			</section>
+
+			<section className='m-20'>
+				<Cotizaciones/>
+			</section>
+
+			<section className=''>
+				Streaming price
+			</section>
+
+			<section className=''>
+				footer
+			</section>
+		</main>
 	);
 }
 

@@ -15,7 +15,7 @@ const dolarOficial = async (req, res) => {
             moneda : cotizacion.nombre,
             compra : cotizacion.compra,
             venta : cotizacion.venta,
-            actualizacion : cotizacion.fechaActualizacion
+            fecha : cotizacion.fechaActualizacion
         }
     })
 
