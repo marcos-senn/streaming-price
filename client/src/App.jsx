@@ -1,23 +1,20 @@
 import Cotizaciones from './Sections/Cotizaciones';
+import Streaming from './Sections/Streaming';
 
 function App() {
 	return (
 		<main className='relative'>
-			<section className=''>
-				Hero
-			</section>
+			<section className=''>Hero</section>
 
 			<section className='m-20'>
-				<Cotizaciones/>
+				<Cotizaciones />
 			</section>
 
 			<section className=''>
-				Streaming price
+				<Streaming/>
 			</section>
 
-			<section className=''>
-				footer
-			</section>
+			<section className=''>footer</section>
 		</main>
 	);
 }

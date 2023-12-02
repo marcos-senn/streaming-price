@@ -2,7 +2,7 @@ const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define(
-        'Currency',
+        'Disney',
         {
             id:{
                 type: DataTypes.INTEGER,
@@ -10,30 +10,18 @@ module.exports = (sequelize) => {
                 autoIncrement: true,
                 allowNull: false,
             },
-            currency:{
+            planName:{
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            name:{
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            buyPrice:{
+            planPrice:{
                 type: DataTypes.FLOAT,
-                allowNull: false,
-            },
-            sellPrice:{
-                type: DataTypes.FLOAT,
-                allowNull: false,
-            },
-            updateDate:{
-                type: DataTypes.STRING,
                 allowNull: false,
             },
         },
         {
             timestamps: false,
-            tableName: 'Currency', // Nombre de la tabla en la base de datos
+            tableName: 'Disney', // Nombre de la tabla en la base de datos
           }
     )
 }
