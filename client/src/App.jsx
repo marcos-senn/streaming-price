@@ -1,5 +1,6 @@
 import Cotizaciones from './Sections/Cotizaciones';
 import Streaming from './Sections/Streaming';
+import Footer from './Sections/Footer';
 
 function App() {
 	return (
@@ -7,14 +8,16 @@ function App() {
 			<section className=''>Hero</section>
 
 			<section className='m-20'>
-				<Cotizaciones />
+				<Cotizaciones/>
 			</section>
 
-			<section className=''>
+			<section className='mx-20'>
 				<Streaming/>
 			</section>
 
-			<section className=''>footer</section>
+			<section className=''>
+				<Footer/>
+			</section>
 		</main>
 	);
 }

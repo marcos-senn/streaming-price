@@ -2,6 +2,8 @@ import StreamingCard from '../Components/StreamingCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
+
 const Streaming = () => {
   const [streamingInfo, setStreamingInfo] = useState([]);
 
@@ -19,7 +21,7 @@ const Streaming = () => {
   }, []);
 
   return (
-    <div className='w-full flex justify-center items-center flex-wrap gap-2'>
+    <div className='w-full flex justify-center items-center flex-wrap gap-5'>
       {streamingInfo.map((streaming) => (
         <StreamingCard key={streaming.serviceName} streamingInfo={streaming} />
       ))}
