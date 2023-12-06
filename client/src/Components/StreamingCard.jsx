@@ -1,18 +1,23 @@
-const StreamingCard = ({streamingInfo}) => {
+const StreamingCard = ({streamingInfo, loading}) => {
 	return (
-		<div className='card bg-neutral text-neutral-content w-[280px] h-[300px]'>
+		<div className='card bg-neutral text-neutral-content w-[280px] h-[340px] border border-transparent hover:border-slate-600 group'>
 			<div className='card-body items-center text-center w-[280px]'>
-				<h3 className='card-title mb-5'>{streamingInfo.serviceName.toUpperCase()}</h3>
+				<h3 className='card-title mb-5 group-hover:text-white group-hover:font-bold'>
+					{streamingInfo.serviceName.toUpperCase()}
+				</h3>
 				{streamingInfo.plans.map((plan, index) => (
 					<div key={index}>
-						<div class='form-control ' className="w-[270px] flex">
-							<label class='label cursor-pointer' className="flex">
-								<input type='checkbox' checked='' class='checkbox' className="checkbox ml-2 w-5 h-5"/>
-								<span class='label-text ml-1'>{plan.planName}</span>
+						<div className='form-control w-[270px] '>
+							<label className='label cursor-pointer'>
+								<input
+									type='checkbox'
+									checked={false}
+									className='checkbox ml-2 w-5 h-5  group-hover:border-white'
+								/>
+								<span className='label-text ml-1 flex  group-hover:text-white'>{plan.planName}</span>
+								<p className='ml-5 flex justify-end mr-1  group-hover:text-white'>{plan.planPrice}</p>
 							</label>
-							<p className="ml-5 flex justify-end mr-1">{plan.planPrice}</p>
 						</div>
-						
 					</div>
 				))}
 			</div>

@@ -1,6 +1,6 @@
-import Github from '../../public/assets/icons8-github.svg';
-import Gmail from '../../public/assets/icons8-gmail.svg';
-import Linkedin from '../../public/assets/icons8-linkedin.svg';
+import Github from '../../assets/icons8-github.svg';
+import Gmail from '../../assets/icons8-gmail.svg';
+import Linkedin from '../../assets/icons8-linkedin.svg';
 const Footer = () => {
 	return (
 		<div>

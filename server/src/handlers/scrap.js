@@ -2,6 +2,7 @@ require('dotenv').config();
 const puppeteer = require('puppeteer');
 const {SCRAPING_URL} = process.env;
 
+let puppeteerPool = [];
 // const serviceElements = document.querySelectorAll('.css-j7qwjs');
 // let services = [];
 
@@ -32,69 +33,84 @@ const {SCRAPING_URL} = process.env;
 
 /*esta funcion hace scraping en una web para diferentes cotizaciones de servicios de streaming y luego los retorna para que lo use el handler que llena la base de datos con 
 los datos obtenidos*/
+async function getBrowserInstance() {
+	if (puppeteerPool.length) {
+		const browser = puppeteerPool.pop();
+		// Check if the browser is still usable before returning
+		if (await browser.isConnected()) {
+			return browser;
+		}
+		// Close the unusable browser and remove it from the pool
+		await browser.close();
+	}
+
+	// Create a new browser instance if the pool is empty or all browsers are unusable
+	const browser = await puppeteer.launch({
+		args: [
+			'--disable-web-security',
+			'--disable-features=IsolateOrigins',
+			'--disable-site-isolation-trials',
+			'--no-sandbox',
+			'--disable-setuid-sandbox',
+		],
+		headless: true,
+	});
+
+	// Register the browser in the pool for future use
+	puppeteerPool.push(browser);
+
+	return browser;
+}
 
 const scrapWebsite = async (req, res) => {
+	let browser;
+
 	try {
-		const browser = await puppeteer.launch({
-			args: [
-				'--disable-web-security',
-				'--disable-features=IsolateOrigins',
-				'--disable-site-isolation-trials',
-				'--no-sandbox',
-				'--disable-setuid-sandbox',
-			],
-			headless: 'new',
-		});
+		browser = await getBrowserInstance();
 		const page = await browser.newPage();
 
 		await page.goto(SCRAPING_URL);
-
-		// Esperar a que se cargue el selector necesario para continuar
 		await page.waitForSelector('.css-j7qwjs');
 
 		const result = await page.evaluate(() => {
-			let services = [];
-			let serviceNamesSet = new Set();
+			const services = [];
+			const serviceNamesSet = new Set();
 
 			const serviceElements = document.querySelectorAll('.css-j7qwjs');
 
-			Array.from(serviceElements).forEach((serviceElement) => {
+			for (const serviceElement of serviceElements) {
 				const serviceNameElement = serviceElement.querySelector('.css-7amdlx');
 
 				if (serviceNameElement) {
 					const serviceName = serviceNameElement.textContent.trim();
 
-					// Verificar si el servicio ya está en el conjunto
 					if (!serviceNamesSet.has(serviceName)) {
 						serviceNamesSet.add(serviceName);
 
-						const planElements = serviceElement.querySelectorAll('.css-1kjktec');
-						const plans = Array.from(planElements).map((planElement) => {
-							const planNameElements =
-								planElement.querySelectorAll('.css-1m2j1p4');
-							const planPriceElements =
-								planElement.querySelectorAll('.css-m99oed');
+						const plans = Array.from(
+							serviceElement.querySelectorAll('.css-1kjktec'),
+						)
+							.map((planElement) => {
+								const planDetails = Array.from(
+									planElement.querySelectorAll('.css-1m2j1p4'),
+								).map((nameElement, index) => ({
+									planName: nameElement.textContent.trim(),
+									planPrice: planElement
+										.querySelectorAll('.css-m99oed')
+										[index].textContent.trim(),
+								}));
 
-							// Mapear los elementos de nombre y precio
-							const planDetails = Array.from(planNameElements).map(
-								(nameElement, index) => {
-									const planName = nameElement.textContent.trim();
-									const planPrice = planPriceElements[index].textContent.trim();
-									return {planName, planPrice};
-								},
-							);
+								return planDetails;
+							})
+							.flat();
 
-							return planDetails;
-						});
-
-						services.push({serviceName, plans: plans.flat()});
+						services.push({serviceName, plans});
 					}
 				}
-			});
-
+			}
 			return services;
 		});
-		
+
 		res.status(200).json(result);
 		await browser.close();
 	} catch (error) {

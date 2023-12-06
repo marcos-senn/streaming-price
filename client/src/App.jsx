@@ -1,6 +1,7 @@
 import Cotizaciones from './Sections/Cotizaciones';
 import Streaming from './Sections/Streaming';
 import Footer from './Sections/Footer';
+import Summatory from './Components/Summatory';
 
 function App() {
 	return (
@@ -11,8 +12,9 @@ function App() {
 				<Cotizaciones/>
 			</section>
 
-			<section className='mx-20'>
+			<section className='mx-20 flex'>
 				<Streaming/>
+				<Summatory/>
 			</section>
 
 			<section className=''>

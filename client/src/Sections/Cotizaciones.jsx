@@ -22,7 +22,7 @@ const Cotizaciones = () => {
 
 	return (
 		<>
-			<div className='w-full flex justify-center items-center flex-wrap gap-2'>
+			<div className='w-full flex justify-center items-center flex-wrap gap-5'>
 				{cotizaciones.map((cotizacion) => (
 					<div className=''>
 						<DolarCard
