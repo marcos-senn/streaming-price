@@ -26,7 +26,7 @@ const Cotizaciones = () => {
 				{cotizaciones.map((cotizacion) => (
 					<div className=''>
 						<DolarCard
-							key={cotizacion.moneda}
+							key={cotizacion.index}
 							moneda={cotizacion.moneda}
 							compra={cotizacion.compra}
 							venta={cotizacion.venta}

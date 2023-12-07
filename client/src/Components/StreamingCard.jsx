@@ -1,4 +1,38 @@
-const StreamingCard = ({streamingInfo, loading}) => {
+import { summatoryStore } from "../store/summatory";
+import {useState, useEffect} from 'react'
+
+
+
+
+const StreamingCard = ({streamingInfo}) => {
+	const store = summatoryStore((state) => state.streaming);
+	const addStreaming = summatoryStore((state) => state.addStreaming);
+	const deleteStreaming = summatoryStore((state)=>state.deleteStreaming)
+	const [checked, setChecked] = useState(false)
+
+	const handleCheck = (planName)=>{
+		
+		const serviceName = streamingInfo.serviceName
+		const plans = streamingInfo.plans.filter((plans)=>{return plans.planName === planName})
+		const planPrice = plans[0].planPrice
+		
+	
+		if(!checked){
+			console.log(`Adding ${serviceName} ${planName} ${planPrice}`)
+			addStreaming(serviceName, planName , planPrice)
+		}
+		if(checked){
+			console.log(`Deleting ${serviceName} ${planName} ${planPrice}`)
+			deleteStreaming(serviceName, planName)
+		}
+		setChecked(!checked)
+
+	}
+
+	useEffect(()=>{
+		console.log(store)
+	},[store])
+
 	return (
 		<div className='card bg-neutral text-neutral-content w-[280px] h-[340px] border border-transparent hover:border-slate-600 group'>
 			<div className='card-body items-center text-center w-[280px]'>
@@ -10,9 +44,11 @@ const StreamingCard = ({streamingInfo, loading}) => {
 						<div className='form-control w-[270px] '>
 							<label className='label cursor-pointer'>
 								<input
+									key={plan.planName}
 									type='checkbox'
-									checked={false}
+									checked={checked}
 									className='checkbox ml-2 w-5 h-5  group-hover:border-white'
+									onChange={()=>handleCheck(plan.planName)}
 								/>
 								<span className='label-text ml-1 flex  group-hover:text-white'>{plan.planName}</span>
 								<p className='ml-5 flex justify-end mr-1  group-hover:text-white'>{plan.planPrice}</p>

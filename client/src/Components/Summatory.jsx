@@ -1,4 +1,8 @@
+import {summatoryStore} from '../store/summatory'
+
 const Summatory = () => {
+	const services = summatoryStore((state) => state.streaming);
+	
 	return (
 		<div className='card bg-gray-900 text-neutral-content w-[480px] h-[340px]  border border-transparent hover:border-red-600 group mr-20'>
 			<div className='card-body items-center text-center'>

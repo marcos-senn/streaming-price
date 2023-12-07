@@ -53,7 +53,7 @@ async function getBrowserInstance() {
 			'--no-sandbox',
 			'--disable-setuid-sandbox',
 		],
-		headless: true,
+		headless: 'new',
 	});
 
 	// Register the browser in the pool for future use
@@ -115,7 +115,7 @@ const scrapWebsite = async (req, res) => {
 		await browser.close();
 	} catch (error) {
 		console.error(error.message);
-		res.status(500).json({error: error.message});
+		res.status(500).json(error);
 	}
 };
 
