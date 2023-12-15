@@ -1,28 +1,34 @@
 import {create} from 'zustand';
 
-export const summatoryStore = create((set, get) => {
+export const StreamingServiceStore = create((set, get) => {
 	return {
 		streaming: [],
 		addStreaming: (serviceName, planName, planPrice) =>
 			set((state) => {
-				const newStreaming = [...state.streaming]; // Create a copy of the existing state
+				const newStreaming = [...state.streaming];
 				newStreaming.push({
 					serviceName,
 					planName,
 					planPrice,
-				}); // Add the new object to the copy
-				return {...state, streaming: newStreaming}; // Update the state with the new streaming array
+				});
+				return {...state, streaming: newStreaming};
 			}),
-		deleteStreaming: (serviceName, planName) =>
-			set((state) => {
-				const removeService = [...state.streaming].filter(
-					(service) =>
-						!(
-							service.serviceName === serviceName &&
-							service.planName === planName
-						),
-				);
-				return {...state, streaming: removeService};
-			}),
+		deleteStreaming: (serviceName, planName) => {
+			try {
+				set((state) => {
+					const removeService = [...state.streaming]?.filter(
+						(service) =>
+							!(
+								service.serviceName === serviceName &&
+								service.planName === planName
+							),
+					);
+					return {...state, streaming: removeService};
+				});
+			} catch (error) {
+				console.log(`Error deleting streaming service: ${error}`);
+				return state;
+			}
+		},
 	};
 });

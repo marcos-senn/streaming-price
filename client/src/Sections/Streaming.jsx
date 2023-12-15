@@ -38,6 +38,10 @@ const Streaming = () => {
       <div className='skeleton h-[340px] w-[280px]'></div>
       <div className='skeleton h-[340px] w-[280px]'></div>
       <div className='skeleton h-[340px] w-[280px]'></div>
+		<div className='skeleton h-[340px] w-[280px]'></div>
+		<div className='skeleton h-[340px] w-[280px]'></div>
+		<div className='skeleton h-[340px] w-[280px]'></div>
+		
 		</div>
 	) : (
 		<div>

@@ -1,13 +1,13 @@
-import { summatoryStore } from "../store/summatory";
+import { StreamingServiceStore } from "../store/summatory";
 import {useState, useEffect} from 'react'
 
 
 
 
 const StreamingCard = ({streamingInfo}) => {
-	const store = summatoryStore((state) => state.streaming);
-	const addStreaming = summatoryStore((state) => state.addStreaming);
-	const deleteStreaming = summatoryStore((state)=>state.deleteStreaming)
+	const store = StreamingServiceStore((state) => state.streaming);
+	const addStreaming = StreamingServiceStore((state) => state.addStreaming);
+	const deleteStreaming = StreamingServiceStore((state)=>state.deleteStreaming)
 	const [checked, setChecked] = useState(false)
 
 	const handleCheck = (planName)=>{
