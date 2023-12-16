@@ -16,18 +16,19 @@ const StreamingCard = ({streamingInfo}) => {
 		
 		const serviceName = streamingInfo.serviceName
 		const plans = streamingInfo.plans.filter((plans)=>{return plans.planName === planName})
-		const planPrice = plans[0].planPrice
+		const price = plans[0].planPrice
+		const planPrice = Number(parseFloat(price.replace('.','').replace('$','').replace(',','.')))
 		
 	
 		if(!checkedState[planName]){
-			console.log(`Adding ${serviceName} ${planName} ${planPrice}`)
+			//console.log(`Adding ${serviceName} ${planName} ${planPrice}`)
 			addStreaming(serviceName, planName , planPrice)
 		} else{
-			console.log(`Deleting ${serviceName} ${planName} ${planPrice}`)
+			//console.log(`Deleting ${serviceName} ${planName} ${planPrice}`)
 			deleteStreaming(serviceName, planName)
 		}
 		setCheckedState((prevState)=>({...prevState, [planName]:!prevState[planName]}))
-		console.log(checkedState)
+		//console.log(checkedState)
 
 	}
 
