@@ -7,9 +7,6 @@ const Streaming = () => {
 	const [streamingInfo, setStreamingInfo] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	
-	
-
 	useEffect(() => {
 		const fetchData = async () => {
 			

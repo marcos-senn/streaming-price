@@ -16,7 +16,7 @@ export const StreamingServiceStore = create((set, get) => {
 		deleteStreaming: (serviceName, planName) => {
 			try {
 				set((state) => {
-					const removeService = [...state.streaming]?.filter(
+					const removeService = [...state.streaming].filter(
 						(service) =>
 							!(
 								service.serviceName === serviceName &&
