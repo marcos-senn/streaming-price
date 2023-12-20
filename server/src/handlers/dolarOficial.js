@@ -5,13 +5,7 @@ const { DOLAR_TARJETA, DOLAR_TOTAL } = process.env;
 
 const dolarOficial = async (req, res) => {
    try {
-    const {data : tarjeta} = await axios.get(DOLAR_TARJETA)
-    const dolarTarjera = {
-        moneda : tarjeta.nombre,
-        compra : tarjeta.compra,
-        venta : tarjeta.venta,
-        fecha : tarjeta.fechaActualizacion
-    }
+    
 
     const {data} = await axios.get(DOLAR_TOTAL)
     
@@ -28,7 +22,7 @@ const dolarOficial = async (req, res) => {
         }
     })
 
-    res.status(200).json([...cotizaciones,dolarTarjera]);
+    res.status(200).json([...cotizaciones]);
     
    } catch (error) {
     res.status(500).json({error: error.message});

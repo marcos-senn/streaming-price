@@ -8,10 +8,6 @@ const StreamingCard = ({streamingInfo}) => {
 	const deleteStreaming = StreamingServiceStore((state)=>state.deleteStreaming)
 	const [checkedState, setCheckedState] = useState({})
 
-	useEffect((()=>{
-		console.log(store)
-	}),[store])
-
 	const handleCheck = (planName)=>{
 		
 		const serviceName = streamingInfo.serviceName

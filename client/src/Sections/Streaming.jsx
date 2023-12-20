@@ -26,7 +26,7 @@ const Streaming = () => {
 
 	
 	return loading ? (
-		<div className='w-full flex justify-center items-center flex-wrap gap-5'>
+		<div className='w-full flex justify-center items-center flex-wrap gap-5 '>
 			<div className='skeleton h-[340px] w-[280px]'></div>
       <div className='skeleton h-[340px] w-[280px]'></div>
       <div className='skeleton h-[340px] w-[280px]'></div>
@@ -41,8 +41,8 @@ const Streaming = () => {
 		
 		</div>
 	) : (
-		<div>
-			<div className='w-full flex justify-start items-center flex-wrap gap-5 pl-10 ml-10'>
+		<div className='flex w-3/4'>
+			<div className='w-full flex justify-start items-center flex-wrap gap-5'>
 			{streamingInfo.map((streaming) => (
 				<StreamingCard
 					key={streaming.serviceName}
