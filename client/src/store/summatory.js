@@ -3,6 +3,8 @@ import {create} from 'zustand';
 export const StreamingServiceStore = create((set, get) => {
 	return {
 		streaming: [],
+		checkedState:{},
+		addCheckedState: (checkedState) => set((state)=>{return {...state, checkedState: checkedState}}),
 		addStreaming: (serviceName, planName, planPrice) =>
 			set((state) => {
 				const newStreaming = [...state.streaming];

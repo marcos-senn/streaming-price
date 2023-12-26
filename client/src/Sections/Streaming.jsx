@@ -27,21 +27,21 @@ const Streaming = () => {
 	
 	return loading ? (
 		<div className='w-full flex justify-center items-center flex-wrap gap-5 '>
-			<div className='skeleton h-[340px] w-[280px]'></div>
-      <div className='skeleton h-[340px] w-[280px]'></div>
-      <div className='skeleton h-[340px] w-[280px]'></div>
-      <div className='skeleton h-[340px] w-[280px]'></div>
-      <div className='skeleton h-[340px] w-[280px]'></div>
-      <div className='skeleton h-[340px] w-[280px]'></div>
-      <div className='skeleton h-[340px] w-[280px]'></div>
-      <div className='skeleton h-[340px] w-[280px]'></div>
-		<div className='skeleton h-[340px] w-[280px]'></div>
-		<div className='skeleton h-[340px] w-[280px]'></div>
-		<div className='skeleton h-[340px] w-[280px]'></div>
+			<div className='skeleton h-[250px] w-[280px]'></div>
+      <div className='skeleton h-[250px] w-[250px]'></div>
+      <div className='skeleton h-[250px] w-[250px]'></div>
+      <div className='skeleton h-[250px] w-[250px]'></div>
+      <div className='skeleton h-[250px] w-[250px]'></div>
+      <div className='skeleton h-[250px] w-[250px]'></div>
+      <div className='skeleton h-[250px] w-[250px]'></div>
+      <div className='skeleton h-[250px] w-[250px]'></div>
+		<div className='skeleton h-[250px] w-[250px]'></div>
+		<div className='skeleton h-[250px] w-[250px]'></div>
+		<div className='skeleton h-[250px] w-[250px]'></div>
 		
 		</div>
 	) : (
-		<div className='flex w-3/4'>
+		<div className='w-full xlsm:order-last'>
 			<div className='w-full flex justify-start items-center flex-wrap gap-5'>
 			{streamingInfo.map((streaming) => (
 				<StreamingCard
