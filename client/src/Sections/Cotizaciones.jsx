@@ -1,13 +1,13 @@
 import DolarCard from './../Components/DolarCard';
 import {useEffect, useState} from 'react';
+import {Carousel} from 'antd';
 import axios from 'axios';
-
-
 
 const Cotizaciones = () => {
 	const [cotizaciones, setCotizaciones] = useState([]);
 	const [fecha, setFecha] = useState('');
 	const [loading, setLoading] = useState(true);
+	
 
 	useEffect(() => {
 		const getCotizaciones = async () => {
@@ -25,31 +25,29 @@ const Cotizaciones = () => {
 		return () => clearInterval(intervalId);
 	}, []);
 
+	
+
 	return loading ? (
-		<div className='w-full flex justify-center items-center flex-wrap gap-5'>
-			<div className='skeleton h-[124px] w-[382px]'></div>
-			<div className='skeleton h-[124px] w-[382px]'></div>
-			<div className='skeleton h-[124px] w-[382px]'></div>
-			<div className='skeleton h-[124px] w-[382px]'></div>
-			<div className='skeleton h-[124px] w-[382px]'></div>
-			<div className='skeleton h-[124px] w-[382px]'></div>
-			<div className='skeleton h-[124px] w-[382px]'></div>
-			
+		<div className=''>
+			<h3>Loading...</h3>
 		</div>
 	) : (
-		<div>
-			<div id='cotizaciones' className='w-auto flex justify-center items-center flex-wrap gap-5 xsm'>
+		<div className='w-full'>
+			<Carousel
+				autoplay
+				slidesToShow={3}
+				className='w-full mx-auto'
+			>
 				{cotizaciones.map((cotizacion) => (
-					<div className=''>
-						<DolarCard
-							key={cotizacion.index}
-							moneda={cotizacion.moneda}
-							compra={cotizacion.compra}
-							venta={cotizacion.venta}
-						/>
-					</div>
+					<DolarCard
+						key={cotizacion.index}
+						moneda={cotizacion.moneda}
+						compra={cotizacion.compra}
+						venta={cotizacion.venta}
+					/>
 				))}
-			</div>
+			</Carousel>
+
 			<div className='flex justify-center items-center mt-6 xsm:flex-col'>
 				<h3 className='mr-2'>Ultima Actualización</h3>
 				<p className='ml-2'>{fecha}</p>

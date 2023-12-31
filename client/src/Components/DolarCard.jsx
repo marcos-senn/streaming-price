@@ -1,21 +1,21 @@
 const DolarCard = ({moneda, compra, venta}) => {
 	return (
-		<div className='card w-96 shadow-xl bg-slate-900 border border-transparent group hover:border-sky-900 xlsm:w-[350px]'>
-			<div className='card-body justify-center items-center'>
-				<h2 className='card-title flex justify-center font-bold font-montserrat text-slate-300'>
+		<div className='w-full h-[100px] xlsm:h-[150px] hover:border-slate-600'>
+			<div className='w-full flex flex-col justify-center items-center xlsm:justify-normal xlsm:items-start'>
+				<h2 className='card-title font-bold font-montserrat text-white text-sm xlsm:text-xs'>
 					{moneda}
 				</h2>
-				<div className='flex justify-center items-center'>
+				<div className=''>
 					{compra ? (
-						<p className='px-4a font-bold text-slate-50'>
-							<span className='text-green-500 font-palanquin font-bold'>COMPRA </span>
-							{compra}
+						<p className=' font-bold text-sm text-slate-100 xlsm:text-xs' >
+							<span className='text-green-500 font-palanquin font-bold text-sm xlsm:text-xs'>COMPRA</span>
+							{`\u00A0 \u00A0 $${compra}`}
 						</p>
 					) : null}
 
-					<p className='px-4 font-bold text-slate-50'>
-						<span className='text-red-500 font-palanquin font-bold'>VENTA </span>
-						{venta}
+					<p className='font-bold text-sm text-slate-100 xlsm:text-xs'>
+						<span className='text-red-500 font-palanquin font-bold text-sm '>VENTA </span>
+						{`\u00A0 \u00A0 \u00A0 $${venta}`}
 					</p>
 				</div>
 			</div>
