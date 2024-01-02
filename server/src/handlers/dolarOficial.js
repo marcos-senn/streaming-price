@@ -25,7 +25,7 @@ const dolarOficial = async (req, res) => {
     res.status(200).json([...cotizaciones]);
     
    } catch (error) {
-    res.status(500).json({error: error.message});
+    res.status(500).json({error: "error.message"});
    }
 };
 

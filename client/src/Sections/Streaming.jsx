@@ -27,7 +27,7 @@ const Streaming = () => {
 	
 	return loading ? (
 		<div className='w-full flex justify-center items-center flex-wrap gap-5 '>
-			<div className='skeleton h-[250px] w-[280px]'></div>
+			<div className='skeleton h-[250px] w-[250px]'></div>
       <div className='skeleton h-[250px] w-[250px]'></div>
       <div className='skeleton h-[250px] w-[250px]'></div>
       <div className='skeleton h-[250px] w-[250px]'></div>
@@ -35,6 +35,7 @@ const Streaming = () => {
       <div className='skeleton h-[250px] w-[250px]'></div>
       <div className='skeleton h-[250px] w-[250px]'></div>
       <div className='skeleton h-[250px] w-[250px]'></div>
+		<div className='skeleton h-[250px] w-[250px]'></div>
 		<div className='skeleton h-[250px] w-[250px]'></div>
 		<div className='skeleton h-[250px] w-[250px]'></div>
 		<div className='skeleton h-[250px] w-[250px]'></div>

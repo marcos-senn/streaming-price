@@ -52,8 +52,9 @@ async function getBrowserInstance() {
 			'--disable-site-isolation-trials',
 			'--no-sandbox',
 			'--disable-setuid-sandbox',
+			'--disable-gpu',
 		],
-		headless: 'new',
+		headless: true,
 	});
 
 	// Register the browser in the pool for future use
@@ -67,10 +68,11 @@ const scrapWebsite = async (req, res) => {
 
 	try {
 		browser = await getBrowserInstance();
-		const page = await browser.newPage();
+		const page = await browser.newPage({devtools: false});
 
 		await page.goto(SCRAPING_URL);
 		await page.waitForSelector('.css-j7qwjs');
+		
 
 		const result = await page.evaluate(() => {
 			const services = [];
