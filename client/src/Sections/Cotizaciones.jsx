@@ -12,12 +12,12 @@ const Cotizaciones = () => {
 	useEffect(() => {
 		const getCotizaciones = async () => {
 			try {
-				const response = await axios.get('http://localhost:43223/dolarOficial');
+				const response = await axios.get('http://localhost:3001/dolarOficial');
 				setCotizaciones(response.data);
 				setFecha(response.data[0].fecha);
 				setLoading(false);
 			} catch (error) {
-				console.log(error.message);
+				console.log(error);
 			}
 		};
 		getCotizaciones();

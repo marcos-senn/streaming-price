@@ -11,7 +11,7 @@ const Streaming = () => {
 		const fetchData = async () => {
 			
 			try {
-				const response = await axios.get('http://localhost:43223/scrap');
+				const response = await axios.get('http://localhost:3001/scrap');
 				setStreamingInfo(response.data);
 				setLoading(false);
 				//console.log(response.data);
