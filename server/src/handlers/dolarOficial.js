@@ -14,6 +14,7 @@ const dolarOficial = async (req, res) => {
             const fechaGMT3 = fechaOriginal.setZone('America/Argentina/Buenos_Aires');
             cotizacion.fechaActualizacion = fechaGMT3.toFormat('dd-MM-yyyy HH:mm');
             
+            
         return {
             moneda : cotizacion.nombre,
             compra : cotizacion.compra,
@@ -25,7 +26,7 @@ const dolarOficial = async (req, res) => {
     res.status(200).json([...cotizaciones]);
     
    } catch (error) {
-    res.status(500).json({error: "error.message"});
+    res.status(500).json({error: "Error interno del servidor"});
    }
 };
 

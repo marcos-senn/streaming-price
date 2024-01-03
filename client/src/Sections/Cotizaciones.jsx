@@ -7,16 +7,17 @@ const Cotizaciones = () => {
 	const [cotizaciones, setCotizaciones] = useState([]);
 	const [fecha, setFecha] = useState('');
 	const [loading, setLoading] = useState(true);
+	
 
 	useEffect(() => {
 		const getCotizaciones = async () => {
 			try {
-				const response = await axios.get('https://dolarapi.com/v1/dolares');
+				const response = await axios.get('http://localhost:43223/dolarOficial');
 				setCotizaciones(response.data);
 				setFecha(response.data[0].fecha);
 				setLoading(false);
 			} catch (error) {
-				console.log(error);
+				console.log(error.message);
 			}
 		};
 		getCotizaciones();
@@ -24,17 +25,23 @@ const Cotizaciones = () => {
 		return () => clearInterval(intervalId);
 	}, []);
 
+	
+
 	return loading ? (
 		<div className=''>
 			<h3>Loading...</h3>
 		</div>
 	) : (
-		<div className='w-full' id='cotizaciones'>
-			<Carousel autoplay slidesToShow={3} className='w-full mx-auto'>
+		<div className='w-full'>
+			<Carousel
+				autoplay
+				slidesToShow={3}
+				className='w-full mx-auto'
+			>
 				{cotizaciones.map((cotizacion) => (
 					<DolarCard
 						key={cotizacion.index}
-						moneda={cotizacion.nombre}
+						moneda={cotizacion.moneda}
 						compra={cotizacion.compra}
 						venta={cotizacion.venta}
 					/>
