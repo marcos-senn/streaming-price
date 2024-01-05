@@ -1,35 +1,9 @@
 require('dotenv').config();
-const puppeteer = require('puppeteer');
+const chromium = require('chrome-aws-lambda');
+const puppeteer = require('puppeteer-core');
 const {SCRAPING_URL} = process.env;
 
 let puppeteerPool = [];
-// const serviceElements = document.querySelectorAll('.css-j7qwjs');
-// let services = [];
-
-// serviceElements.forEach((serviceElement) => {
-//   const serviceNameElement = serviceElement.querySelector('.css-7amdlx');
-//   if (serviceNameElement) {
-//     const serviceName = serviceNameElement.textContent.trim();
-//     const planElements = serviceElement.querySelectorAll('.css-1kjktec');
-//     const plans = Array.from(planElements).map((planElement) => {
-//       const planNameElements = planElement.querySelectorAll('.css-1m2j1p4');
-//       const planPriceElements = planElement.querySelectorAll('.css-m99oed');
-
-//       // Mapear los elementos de nombre y precio
-//       const planDetails = Array.from(planNameElements).map((nameElement, index) => {
-//         const planName = nameElement.textContent.trim();
-//         const planPrice = planPriceElements[index].textContent.trim();
-//         return { planName, planPrice };
-//       });
-
-//       return planDetails;
-//     });
-
-//     services.push({ serviceName, plans: plans.flat() });
-//   }
-// });
-
-// console.log(services);
 
 /*esta funcion hace scraping en una web para diferentes cotizaciones de servicios de streaming y luego los retorna para que lo use el handler que llena la base de datos con 
 los datos obtenidos*/
@@ -46,14 +20,8 @@ async function getBrowserInstance() {
 
 	// Create a new browser instance if the pool is empty or all browsers are unusable
 	const browser = await puppeteer.launch({
-		args: [
-			'--disable-web-security',
-			'--disable-features=IsolateOrigins',
-			'--disable-site-isolation-trials',
-			'--no-sandbox',
-			'--disable-setuid-sandbox',
-			'--disable-gpu',
-		],
+		args: chromium.args,
+		executablePath: process.env.CHROME_EXECUTABLE_PATH || await chromium.executablePath,
 		headless: true,
 	});
 
@@ -70,9 +38,8 @@ const scrapWebsite = async (req, res) => {
 		browser = await getBrowserInstance();
 		const page = await browser.newPage({devtools: false});
 
-		await page.goto("https://www.finanzasargy.com/cotizaciones-streaming");
+		await page.goto(SCRAPING_URL);
 		await page.waitForSelector('.css-j7qwjs');
-		
 
 		const result = await page.evaluate(() => {
 			const services = [];
@@ -110,11 +77,10 @@ const scrapWebsite = async (req, res) => {
 					}
 				}
 			}
-			return [...services];
+			return services;
 		});
-
-		res.status(200).json(result);
 		await browser.close();
+		res.status(200).json(result);
 	} catch (error) {
 		console.error(error.message);
 		res.status(500).json(error);

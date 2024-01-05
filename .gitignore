@@ -108,3 +108,5 @@ package-lock.json
 
 
 README.md
+# Local Netlify folder
+.netlify
