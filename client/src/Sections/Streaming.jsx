@@ -11,7 +11,7 @@ const Streaming = () => {
 		const fetchData = async () => {
 			
 			try {
-				const response = await axios.get('https://streamingback.vercel.app/scrap');
+				const response = await axios('http://localhost:3000/scrap');
 				setStreamingInfo(response.data);
 				setLoading(false);
 				//console.log(response.data);

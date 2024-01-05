@@ -12,7 +12,7 @@ const Cotizaciones = () => {
 	useEffect(() => {
 		const getCotizaciones = async () => {
 			try {
-				const response = await axios.get('https://streamingback.vercel.app/dolarOficial');
+				const response = await axios('https://streamingback.vercel.app/dolarOficial');
 				setCotizaciones(response.data);
 				setFecha(response.data[0].fecha);
 				setLoading(false);
