@@ -1,6 +1,6 @@
 // Importación del servidor HTTP y la conexión a la base de datos desde archivos separados
 const httpServer = require("./src/app");
-const {PORT} = process.env;
+const port = process.env.PORT || 3000;
 // Definición del puerto a utilizar, obtenido de las variables de entorno
 
 
@@ -8,7 +8,7 @@ const {PORT} = process.env;
 
    // La opción "force: false" evita la eliminación de datos existentes en cada sincronización
   
-    httpServer.listen(PORT, () => {
-      console.log(`server conectado a base de datos, puerto ${3001}`);
+    httpServer.listen(port, () => {
+      console.log(`server conectado a base de datos, puerto ${port}`);
     });
   
