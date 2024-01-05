@@ -70,7 +70,7 @@ const scrapWebsite = async (req, res) => {
 		browser = await getBrowserInstance();
 		const page = await browser.newPage({devtools: false});
 
-		await page.goto(SCRAPING_URL);
+		await page.goto("https://www.finanzasargy.com/cotizaciones-streaming");
 		await page.waitForSelector('.css-j7qwjs');
 		
 
@@ -110,7 +110,7 @@ const scrapWebsite = async (req, res) => {
 					}
 				}
 			}
-			return services;
+			return [...services];
 		});
 
 		res.status(200).json(result);
