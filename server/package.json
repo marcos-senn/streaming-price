@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sparticuz/chromium": "^110",
     "axios": "^1.6.2",
     "body-parser": "^1.20.2",
-    "chrome-aws-lambda": "^10.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "date-fns": "^2.30.0",
@@ -22,8 +22,7 @@
     "morgan": "^1.10.0",
     "mysql2": "^3.6.5",
     "nodemon": "^3.0.1",
-    "puppeteer": "^21.5.2",
-    "puppeteer-core": "^21.7.0",
+    "puppeteer-core": "19.6",
     "sequelize": "^6.35.1"
   },
   "devDependencies": {
