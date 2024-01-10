@@ -31,3 +31,4 @@ To get the USD/ARG cotization I use dolarAPI.com
 - USD/ARG value.  
 - Responsive design.
 - Interactive user interface.
+- Fixed navBar for better experience in mobile.
