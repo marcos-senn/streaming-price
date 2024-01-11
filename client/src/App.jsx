@@ -14,7 +14,7 @@ function App() {
 	useEffect(()=>{
 		const updateData = async ()=>{
 			try {
-				axios.get('http://localhost:3000/webScrap')
+				axios.get('https://streamingprices.vercel.app/webScrap')
 			} catch (error) {
 				console.log(error.message)
 			}

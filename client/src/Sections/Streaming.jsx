@@ -13,7 +13,7 @@ const Streaming = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get('http://localhost:3000/scrapingData');
+				const response = await axios.get('https://streamingprices.vercel.app/scrapingData');
 
 				const data = response.data[0].data;
 				setStreamingInfo(data);
