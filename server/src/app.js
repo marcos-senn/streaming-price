@@ -15,7 +15,7 @@ server.use(morgan('dev'));
 server.use((_req, res, next) => {
 	res.header(
 		'Access-Control-Allow-Origin',
-		'https://streaming-price-eta.vercel.app',
+		'https://streamingprices-marcos-senn.vercel.app/',
 	); // Actualizar para que coincida con el dominio desde el cual se realizará la solicitud
 	res.header('Access-Control-Allow-Credentials', 'true');
 	res.header(
