@@ -34,7 +34,7 @@ const Streaming = () => {
 				updateDataTime(uptadaDataTime);
 				//console.log(response.data);
 			} catch (error) {
-				//console.log(error.message);
+				console.log(error.message);
 			}
 		};
 		const intervalId = setInterval(fetchData, 60 * 5 * 1000);
