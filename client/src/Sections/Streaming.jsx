@@ -13,7 +13,9 @@ const Streaming = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get('https://streamingprices.vercel.app/scrapingData');
+				const response = await axios.get(
+					'https://streamingprices.vercel.app/scrapingData',
+				);
 
 				const data = response.data[0].data;
 				setStreamingInfo(data);
@@ -34,7 +36,8 @@ const Streaming = () => {
 				updateDataTime(uptadaDataTime);
 				//console.log(response.data);
 			} catch (error) {
-				console.log(error.message);
+				console.error('Error en la solicitud:', error);
+				console.error('Detalles completos del error:', error.response);
 			}
 		};
 		const intervalId = setInterval(fetchData, 60 * 5 * 1000);
