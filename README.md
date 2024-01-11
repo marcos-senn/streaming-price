@@ -6,11 +6,6 @@ To get the the streaming services plans prices I use Zustand for scrapping websi
 
 To get the USD/ARG cotization I use dolarAPI.com
 
-
-
-
-
-
 ## Tech Stack
 
 **Client:** React, Zustand, TailwindCSS, DaisyUI, AntDesign, Axios.
@@ -19,8 +14,15 @@ To get the USD/ARG cotization I use dolarAPI.com
 
 
 ## Here are some views of the application
+<img src="images/img-5.png">
+<img src="images/img1.png">
+<img src="images/img6.png">
+<div style="display: flex; justify-content: space-between;">
+<img src="images/img2.png" width="300">
+<img src="images/img3.png" width="300">
+<img src="images/img4.png" width="300">
+</div>
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
 ## Some Features
@@ -29,3 +31,4 @@ To get the USD/ARG cotization I use dolarAPI.com
 - USD/ARG value.  
 - Responsive design.
 - Interactive user interface.
+- Fixed navBar for better experience in mobile.
