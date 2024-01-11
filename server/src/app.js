@@ -11,8 +11,6 @@ const server = express();
 const httpServer = createServer(server);
 
 server.use(cors());
-server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
-server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cokieParser());
 server.use(morgan("dev"));
 server.use((_req, res, next) => {
