@@ -4,13 +4,13 @@ This project lists a few streaming services that works in Argentina and the curr
 
 To get the the streaming services plans prices I use Puppeteer for scrapping websites. Later I use the data for show diferent cards for that prices. Also, for manage the states I use Zustand.
 
-To get the USD/ARG cotization I use dolarAPI.com
+Deploy Link: https://dentista-sage.vercel.app/
 
 ## Tech Stack
 
-**Client:** React, Zustand, TailwindCSS, DaisyUI, AntDesign, Axios.
+**Client:** React, TailwindCSS, AntDesign.
 
-**Server:** Node, Express, Puppeteer.
+
 
 
 ## Here are some views of the application
@@ -27,8 +27,9 @@ To get the USD/ARG cotization I use dolarAPI.com
 
 ## Some Features
 
-- Total Price Calculator for several streaming services plans. 
-- USD/ARG value.  
-- Responsive design.
-- Interactive user interface.
-- Fixed navBar for better experience in mobile.
+-Service Listings: Detailed descriptions of the dental services offered by the clinic.
+-Contact Information: Easily accessible contact details including email, phone number, and clinic address.
+-Google Maps Integration: An embedded map showing the clinic's location for easy navigation.
+-Responsive Design: Ensures a seamless experience on various devices, including mobile and desktop.
+-Interactive User Interface: A user-friendly and engaging interface.
+-Fixed NavBar: A fixed navigation bar for better mobile experience.
